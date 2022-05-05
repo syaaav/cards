@@ -25,6 +25,9 @@
     
         renderScreen: function(screenName) {
             window.application.screens['startScreen'] = renderStartScreen;
+            window.application.screens['level-1'] = renderScreenLevel1;
+            window.application.screens['level-2'] = renderScreenLevel2;
+            window.application.screens['level-3'] = renderScreenLevel3;
     
             // Вызываем функцию построения экрана объекта
             if (screenName in window.application.screens) {    
@@ -44,8 +47,13 @@
                 console.log('Такого блока не существует');
             }
         },
+
+        difficulty: '',
     }
     </script>
     <script src="screen_Start.js"></script>
+    <script src="screen_level-1.js"></script>
+    <script src="screen_level-2.js"></script>
+    <script src="screen_level-3.js"></script>
 </body>
 </html>

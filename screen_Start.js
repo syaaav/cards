@@ -38,9 +38,28 @@ function renderDifficulty (container) {
     button.classList.add('button');
     button.textContent = 'Старт';
 
+    levels.addEventListener('click', (event) => { 
+        event.preventDefault();
+        window.application.difficulty = event.target.textContent;
+        console.log(window.application.difficulty);
+    });
+
     button.addEventListener('click', (event) => { 
         event.preventDefault();
         console.log('Кнопка работает');
+
+        if (window.application.difficulty === '1') {
+            console.log('Уровень 1');
+            window.application.renderScreen('level-1');
+        } else if (window.application.difficulty === '2') {
+            window.application.renderScreen('level-2');
+                console.log('Уровень 2');
+            } else if (window.application.difficulty === '3') {
+                    window.application.renderScreen('level-3');
+                    console.log('Уровень 3');
+                } else {
+                        console.log('Error');
+                    }
     });
 
     container.appendChild(title);
