@@ -5,9 +5,49 @@
   box-sizing: border-box;
 }
 
+@-webkit-keyframes lds-circle {
+  0%,
+  100% {
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@keyframes lds-circle {
+  0%,
+  100% {
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
 .center {
   padding-right: calc(50% - 600px);
   padding-left: calc(50% - 600px);
+}
+
+.hidden {
+  display: none;
 }
 
 .background {
@@ -20,6 +60,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   height: 100vh;
   background-color: #004980;
@@ -41,13 +85,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #C2F5FF;
+  background-color: #c2f5ff;
   border-radius: 12px;
 }
 
 .difficulty_title {
   max-width: 208px;
   margin-bottom: 48px;
+  font-family: "Oswald", sans-serif;
   font-size: 40px;
   text-align: center;
   color: #004980;
@@ -69,6 +114,7 @@
   line-height: 98px;
   background-color: #fff;
   border-radius: 12px;
+  font-family: "Oswald", sans-serif;
   text-align: center;
   font-size: 64px;
   color: #004980;
@@ -76,13 +122,204 @@
 
 .button {
   width: 246px;
-  background-color: #7AC100;
+  background-color: #7ac100;
   border-radius: 12px;
   border-color: transparent;
+  font-family: "Oswald", sans-serif;
   font-size: 24px;
   line-height: 50px;
   text-align: center;
   color: #fff;
+}
+
+.fieldGame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.topMenu {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 35px 20px;
+}
+
+.fieldTime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 5px;
+}
+
+.titleMin,
+.titleSec {
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.timerMin,
+.timerSec {
+  font-family: "Oswald", sans-serif;
+  font-size: 64px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.point {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  font-size: 64px;
+  color: #ffffff;
+}
+
+.fieldButton {
+  padding-bottom: 15px;
+}
+
+.fieldCards {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+  margin: 0px 20px 40px 20px;
+}
+
+.cardsRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 15px;
+}
+
+.cardShirt {
+  -webkit-animation: lds-circle 0.4s ease-out;
+          animation: lds-circle 0.4s ease-out;
+  background-image: url("img/shirt.png");
+  width: 95px;
+  height: 133px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.cardBody {
+  width: 95px;
+  height: 133px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.cardTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 6px;
+}
+
+.rankTop {
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  color: #000000;
+}
+
+.suitTop {
+  font-size: 6px;
+  color: #000000;
+}
+
+.suitCenter {
+  font-size: 24px;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  top: 54px;
+  left: 34px;
+}
+
+.cardBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 1px;
+  right: 6px;
+}
+
+.rankBottom {
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  color: #000000;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.suitBottom {
+  font-size: 6px;
+  color: #000000;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 @media (max-width: 767px) {
@@ -103,7 +340,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    background-color: #C2F5FF;
+    background-color: #c2f5ff;
     border-radius: 12px;
   }
   .difficulty_title {
@@ -134,7 +371,7 @@
   }
   .button {
     width: 200px;
-    background-color: #7AC100;
+    background-color: #7ac100;
     border-radius: 12px;
     border-color: transparent;
     font-size: 20px;

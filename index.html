@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Карты</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="background center"></div>
 
-    <script> 
-    window.application = {
+    <script>
+      window.application = {
         // функции, которые получают объект-узел контейнера и отрисовывают туда какой-то блок
         blocks: {
-            difficulty: '', // окно с выбором уровня сложности
-        }, 
-    
+          difficulty: '', // окно с выбором уровня сложности
+        },
+
         // функции, которые полностью отрисовывают экран, очищают блок document.querySelector('.app')
         // и отрисовывают туда новое содержимое
-        screens: { 
-            startScreen: '', // страница выбора уровня сложности
+        screens: {
+          startScreen: '', // страница выбора уровня сложности
         },
-    
-        renderScreen: function(screenName) {
-            window.application.screens['startScreen'] = renderStartScreen;
-            window.application.screens['level-1'] = renderScreenLevel1;
-            window.application.screens['level-2'] = renderScreenLevel2;
-            window.application.screens['level-3'] = renderScreenLevel3;
-    
-            // Вызываем функцию построения экрана объекта
-            if (screenName in window.application.screens) {    
-                window.application.screens[screenName](); 
-            } else {
-                console.log('Такой страницы не существует');
-            }
+
+        renderScreen: function (screenName) {
+          window.application.screens['startScreen'] = renderStartScreen;
+          window.application.screens['screenGame'] = renderScreenGame;
+
+          // Вызываем функцию построения экрана объекта
+          if (screenName in window.application.screens) {
+            window.application.screens[screenName]();
+          } else {
+            console.log('Такой страницы не существует');
+          }
         },
-    
-        renderBlock: function(blockName, container) {
-            window.application.blocks['difficulty'] = renderDifficulty;
-            
-            // Вызываем функцию построения блока объекта
-            if (blockName in window.application.blocks) {
-                window.application.blocks[blockName](container);
-            } else {
-                console.log('Такого блока не существует');
-            }
+
+        renderBlock: function (blockName, container) {
+          window.application.blocks['difficulty'] = renderDifficulty;
+          window.application.blocks['topMenu'] = renderTopMenu;
+          window.application.blocks['fieldCards'] = renderCards;
+
+          // Вызываем функцию построения блока объекта
+          if (blockName in window.application.blocks) {
+            window.application.blocks[blockName](container);
+          } else {
+            console.log('Такого блока не существует');
+          }
         },
 
         difficulty: '',
-    }
+
+        numberCards: '',
+      };
     </script>
     <script src="screen_Start.js"></script>
-    <script src="screen_level-1.js"></script>
-    <script src="screen_level-2.js"></script>
-    <script src="screen_level-3.js"></script>
-</body>
+    <script src="screen_Game.js"></script>
+  </body>
 </html>
