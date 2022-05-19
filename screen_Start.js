@@ -1,65 +1,61 @@
-// отрисовываем страницу авторизации при загрузке ДОМ-дерева
+import './style.css';
+import * as CardsFunctions from './screen_Game.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-  window.application.renderScreen('startScreen');
+  renderStartScreen();
 });
 
-// функция для создания стартовой страницы
+function createNewEl(type, className, text, container) {
+  const el = document.createElement(type);
+  el.classList.add(className);
+  el.textContent = text;
+  container.appendChild(el);
+}
+
 function renderStartScreen() {
   const background = document.querySelector('.background');
   background.textContent = '';
 
-  const difficulty = document.createElement('div');
-  difficulty.classList.add('difficulty');
-  background.appendChild(difficulty);
-
-  window.application.renderBlock('difficulty', difficulty);
+  createNewEl('div', 'difficulty', '', background);
+  renderDifficulty(document.querySelector('.difficulty'));
 }
 
-// создаем окно выбора сложности
 function renderDifficulty(container) {
-  const title = document.createElement('div');
-  title.classList.add('difficulty_title');
-  title.textContent = 'Выбери сложность';
-  container.appendChild(title);
+  createNewEl('div', 'difficultyTitle', 'Выберите сложность', container);
 
-  const levels = document.createElement('div');
-  levels.classList.add('difficulty_levels');
-  container.appendChild(levels);
+  createNewEl('div', 'difficultyLevels', '', container);
 
-  const first = document.createElement('div');
-  first.classList.add('first');
-  first.textContent = '1';
-  levels.appendChild(first);
-  const second = document.createElement('div');
-  second.classList.add('second');
-  second.textContent = '2';
-  levels.appendChild(second);
-  const third = document.createElement('div');
-  third.classList.add('third');
-  third.textContent = '3';
-  levels.appendChild(third);
+  createNewEl('div', 'first', '1', document.querySelector('.difficultyLevels'));
+  createNewEl(
+    'div',
+    'second',
+    '2',
+    document.querySelector('.difficultyLevels')
+  );
+  createNewEl('div', 'third', '3', document.querySelector('.difficultyLevels'));
 
-  const button = document.createElement('button');
-  button.classList.add('button');
-  button.textContent = 'Старт';
-  container.appendChild(button);
+  createNewEl('button', 'button', 'Старт', container);
 
-  levels.addEventListener('click', (event) => {
-    event.preventDefault();
-    window.application.difficulty = event.target.textContent;
-  });
+  document
+    .querySelector('.difficultyLevels')
+    .addEventListener('click', (event) => {
+      event.preventDefault();
+      window.application.difficulty = event.target.textContent;
+    });
 
-  button.addEventListener('click', (event) => {
+  document.querySelector('.button').addEventListener('click', (event) => {
     event.preventDefault();
     console.log('Кнопка работает');
 
     if (window.application.difficulty === '1') {
-      window.application.numberCards = 3;
+      window.application.numberCards = 2;
     } else if (window.application.difficulty === '2') {
-      window.application.numberCards = 6;
+      window.application.numberCards = 4;
     } else if (window.application.difficulty === '3') {
-      window.application.numberCards = 9;
+      window.application.numberCards = 6;
     }
-    window.application.renderScreen('screenGame');
+    CardsFunctions.renderScreenGame();
   });
 }
+
+export { createNewEl };

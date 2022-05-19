@@ -1,167 +1,123 @@
+import { createNewEl } from './screen_Start.js';
+import * as GameFunctions from './logic_Game.js';
+
 function renderScreenGame() {
   const background = document.querySelector('.background');
   background.textContent = '';
 
-  const fieldGame = document.createElement('div');
-  fieldGame.classList.add('fieldGame');
-  fieldGame.classList.add('center');
-  background.appendChild(fieldGame);
+  createNewEl('div', 'fieldGame', '', background);
+  document.querySelector('.fieldGame').classList.add('center');
 
-  const topMenu = document.createElement('div');
-  topMenu.classList.add('topMenu');
-  fieldGame.appendChild(topMenu);
+  createNewEl('div', 'topMenu', '', document.querySelector('.fieldGame'));
+  createNewEl('div', 'fieldCards', '', document.querySelector('.fieldGame'));
 
-  const fieldCards = document.createElement('div');
-  fieldCards.classList.add('fieldCards');
-  fieldGame.appendChild(fieldCards);
-
-  window.application.renderBlock('topMenu', topMenu);
-  window.application.renderBlock('fieldCards', fieldCards);
+  renderTopMenu(document.querySelector('.topMenu'));
+  renderCards(document.querySelector('.fieldCards'));
 }
 
 function renderTopMenu(container) {
-  const fieldTime = document.createElement('div');
-  fieldTime.classList.add('fieldTime');
-  container.appendChild(fieldTime);
+  createNewEl('div', 'fieldTime', '', container);
 
-  const timerMin = document.createElement('div');
-  timerMin.classList.add('timerMin');
-  fieldTime.appendChild(timerMin);
+  createNewEl('div', 'timerMin', '', document.querySelector('.fieldTime'));
+  createNewEl('div', 'titleMin', 'min', document.querySelector('.timerMin'));
+  createNewEl('div', 'timeMin', '00', document.querySelector('.timerMin'));
 
-  const titleMin = document.createElement('div');
-  titleMin.classList.add('titleMin');
-  titleMin.textContent = 'min';
-  timerMin.appendChild(titleMin);
-  const timeMin = document.createElement('div');
-  timeMin.classList.add('timeMin');
-  timeMin.textContent = '00';
-  timerMin.appendChild(timeMin);
+  createNewEl('div', 'point', '.', document.querySelector('.fieldTime'));
 
-  const point = document.createElement('div');
-  point.classList.add('point');
-  point.textContent = '.';
-  fieldTime.appendChild(point);
+  createNewEl('div', 'timerSec', '', document.querySelector('.fieldTime'));
+  createNewEl('div', 'titleSec', 'sec', document.querySelector('.timerSec'));
+  createNewEl('div', 'timeSec', '00', document.querySelector('.timerSec'));
 
-  const timerSec = document.createElement('div');
-  timerSec.classList.add('timerSec');
-  fieldTime.appendChild(timerSec);
+  createNewEl('div', 'fieldButton', '', container);
+  createNewEl(
+    'button',
+    'button',
+    'Старт',
+    document.querySelector('.fieldButton')
+  );
 
-  const titleSec = document.createElement('div');
-  titleSec.classList.add('titleSec');
-  titleSec.textContent = 'sec';
-  timerSec.appendChild(titleSec);
-  const timeSec = document.createElement('div');
-  timeSec.classList.add('timeSec');
-  timeSec.textContent = '00';
-  timerSec.appendChild(timeSec);
-
-  const fieldButton = document.createElement('div');
-  fieldButton.classList.add('fieldButton');
-  container.appendChild(fieldButton);
-
-  const button = document.createElement('button');
-  button.classList.add('button');
-  button.textContent = 'Старт';
-  fieldButton.appendChild(button);
-
-  button.addEventListener('click', (event) => {
+  document.querySelector('.button').addEventListener('click', (event) => {
     event.preventDefault();
     console.log('Кнопка работает');
   });
 }
 
+const arrRanks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
+const arrSuits = ['♠️', '♥️', '♦️', '♣️'];
+
 function renderCards(container) {
-  // открытые карты
-  const arrRanks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
-  const arrSuits = ['♠️', '♥️', '♦️', '♣️'];
+  let index = 0;
 
-  for (let suit = 0; suit < 4; suit++) {
-    const cardsRow = document.createElement('div');
-    cardsRow.classList.add('cardsRow');
-    container.appendChild(cardsRow);
+  for (let row = 0; row < 3; row++) {
+    createNewEl('div', 'cardsRow', '', container);
 
-    for (let rank = 0; rank < window.application.numberCards; rank++) {
-      const cardBody = document.createElement('div');
-      cardBody.classList.add('cardBody');
-      cardsRow.appendChild(cardBody);
+    for (
+      let numInRow = 0;
+      numInRow < window.application.numberCards;
+      numInRow++
+    ) {
+      let randomIndexRanks = Math.floor(Math.random() * arrRanks.length);
+      let randomIndexSuits = Math.floor(Math.random() * arrSuits.length);
 
-      const cardTop = document.createElement('div');
-      cardTop.classList.add('cardTop');
-      cardBody.appendChild(cardTop);
+      window.application.createdCards[index] = {
+        rank: arrRanks[randomIndexRanks],
+        suit: arrSuits[randomIndexSuits],
+      };
 
-      const rankTop = document.createElement('div');
-      rankTop.classList.add('rankTop');
-      rankTop.textContent = arrRanks[rank];
-      cardTop.appendChild(rankTop);
+      createNewEl(
+        'div',
+        'cardBody',
+        '',
+        document.querySelectorAll('.cardsRow')[row]
+      );
+      createNewEl(
+        'div',
+        'cardTop',
+        '',
+        document.querySelectorAll('.cardBody')[index]
+      );
+      createNewEl(
+        'div',
+        'rankTop',
+        arrRanks[randomIndexRanks],
+        document.querySelectorAll('.cardTop')[index]
+      );
+      createNewEl(
+        'div',
+        'suitTop',
+        arrSuits[randomIndexSuits],
+        document.querySelectorAll('.cardTop')[index]
+      );
+      createNewEl(
+        'div',
+        'suitCenter',
+        arrSuits[randomIndexSuits],
+        document.querySelectorAll('.cardBody')[index]
+      );
+      createNewEl(
+        'div',
+        'cardBottom',
+        '',
+        document.querySelectorAll('.cardBody')[index]
+      );
+      createNewEl(
+        'div',
+        'suitBottom',
+        arrSuits[randomIndexSuits],
+        document.querySelectorAll('.cardBottom')[index]
+      );
+      createNewEl(
+        'div',
+        'rankBottom',
+        arrRanks[randomIndexRanks],
+        document.querySelectorAll('.cardBottom')[index]
+      );
 
-      const suitTop = document.createElement('div');
-      suitTop.classList.add('suitTop');
-      suitTop.textContent = arrSuits[suit];
-      cardTop.appendChild(suitTop);
-
-      const suitCenter = document.createElement('div');
-      suitCenter.classList.add('suitCenter');
-      suitCenter.textContent = arrSuits[suit];
-      cardBody.appendChild(suitCenter);
-
-      const cardBottom = document.createElement('div');
-      cardBottom.classList.add('cardBottom');
-      cardBody.appendChild(cardBottom);
-
-      const suitBottom = document.createElement('div');
-      suitBottom.classList.add('suitBottom');
-      suitBottom.textContent = arrSuits[suit];
-      cardBottom.appendChild(suitBottom);
-
-      const rankBottom = document.createElement('div');
-      rankBottom.classList.add('rankBottom');
-      rankBottom.textContent = arrRanks[rank];
-      cardBottom.appendChild(rankBottom);
+      index++;
     }
   }
+  GameFunctions.countNumPairs();
+  setTimeout(GameFunctions.hideCards, 5000);
 }
 
-function hideCards() {
-  // прячем карты и запускаем таймер
-  const cardsBody = document.querySelectorAll('.cardBody');
-  const cardTop = document.querySelectorAll('.cardTop');
-  const suitCenter = document.querySelectorAll('.suitCenter');
-  const cardBottom = document.querySelectorAll('.cardBottom');
-
-  for (const key in cardsBody) {
-    cardTop[key].classList = 'hidden';
-    suitCenter[key].classList = 'hidden';
-    cardBottom[key].classList = 'hidden';
-    cardsBody[key].classList = 'cardShirt';
-  }
-
-  const timeSec = document.querySelector('.timeSec');
-  const timeMin = document.querySelector('.timeMin');
-
-  // Variables
-  let minute = 0;
-  let second = 0;
-
-  clearInterval;
-  setInterval(startTimer, 1000);
-
-  function startTimer() {
-    second++;
-    if (second <= 9) {
-      timeSec.textContent = '0' + second;
-    } else {
-      timeSec.textContent = second;
-    }
-    if (second > 59) {
-      second = 0;
-      minute++;
-      if (minute <= 9) {
-        timeMin.textContent = '0' + minute;
-      } else {
-        timeMin.textContent = minute;
-      }
-    }
-  }
-}
-
-setTimeout(hideCards, 5000);
+export { renderScreenGame, renderTopMenu, renderCards };

@@ -47,7 +47,7 @@
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 .background {
@@ -89,7 +89,7 @@
   border-radius: 12px;
 }
 
-.difficulty_title {
+.difficultyTitle {
   max-width: 208px;
   margin-bottom: 48px;
   font-family: "Oswald", sans-serif;
@@ -98,7 +98,7 @@
   color: #004980;
 }
 
-.difficulty_levels {
+.difficultyLevels {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,7 +183,7 @@
   font-family: "Oswald", sans-serif;
   font-size: 16px;
   text-align: right;
-  color: #ffffff;
+  color: #fff;
 }
 
 .timerMin,
@@ -191,14 +191,14 @@
   font-family: "Oswald", sans-serif;
   font-size: 64px;
   text-align: right;
-  color: #ffffff;
+  color: #fff;
 }
 
 .point {
   font-family: "Oswald", sans-serif;
   text-align: center;
   font-size: 64px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .fieldButton {
@@ -244,7 +244,6 @@
   background-image: url("img/shirt.png");
   width: 95px;
   height: 133px;
-  position: relative;
   border-radius: 4px;
 }
 
@@ -252,7 +251,7 @@
   width: 95px;
   height: 133px;
   position: relative;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 4px;
 }
 
@@ -274,18 +273,18 @@
 .rankTop {
   font-family: "Oswald", sans-serif;
   font-size: 24px;
-  color: #000000;
+  color: #000;
 }
 
 .suitTop {
   font-size: 6px;
-  color: #000000;
+  color: #000;
 }
 
 .suitCenter {
   font-size: 24px;
   text-align: center;
-  color: #000000;
+  color: #000;
   position: absolute;
   top: 54px;
   left: 34px;
@@ -310,14 +309,14 @@
 .rankBottom {
   font-family: "Oswald", sans-serif;
   font-size: 24px;
-  color: #000000;
+  color: #000;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
 .suitBottom {
   font-size: 6px;
-  color: #000000;
+  color: #000;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }

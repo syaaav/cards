@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,7 +10,6 @@
       href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
     <title>Карты</title>
   </head>
   <body>
@@ -18,48 +17,16 @@
 
     <script>
       window.application = {
-        // функции, которые получают объект-узел контейнера и отрисовывают туда какой-то блок
-        blocks: {
-          difficulty: '', // окно с выбором уровня сложности
-        },
-
-        // функции, которые полностью отрисовывают экран, очищают блок document.querySelector('.app')
-        // и отрисовывают туда новое содержимое
-        screens: {
-          startScreen: '', // страница выбора уровня сложности
-        },
-
-        renderScreen: function (screenName) {
-          window.application.screens['startScreen'] = renderStartScreen;
-          window.application.screens['screenGame'] = renderScreenGame;
-
-          // Вызываем функцию построения экрана объекта
-          if (screenName in window.application.screens) {
-            window.application.screens[screenName]();
-          } else {
-            console.log('Такой страницы не существует');
-          }
-        },
-
-        renderBlock: function (blockName, container) {
-          window.application.blocks['difficulty'] = renderDifficulty;
-          window.application.blocks['topMenu'] = renderTopMenu;
-          window.application.blocks['fieldCards'] = renderCards;
-
-          // Вызываем функцию построения блока объекта
-          if (blockName in window.application.blocks) {
-            window.application.blocks[blockName](container);
-          } else {
-            console.log('Такого блока не существует');
-          }
-        },
-
         difficulty: '',
 
         numberCards: '',
+
+        createdCards: [],
+
+        numberPairs: '',
+
+        selectedCards: [],
       };
     </script>
-    <script src="screen_Start.js"></script>
-    <script src="screen_Game.js"></script>
   </body>
 </html>
