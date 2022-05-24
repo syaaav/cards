@@ -58,4 +58,4 @@ function renderDifficulty(container) {
   });
 }
 
-export { createNewEl };
+export { createNewEl, renderStartScreen };

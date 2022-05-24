@@ -1,3 +1,5 @@
+import { renderResult } from './screen_Final.js';
+
 // считаем кол-во одинаковых пар
 function countNumPairs() {
   let pairs = 0;
@@ -67,7 +69,7 @@ function hideCards() {
   });
 
   clearInterval;
-  setInterval(startTimer, 1000);
+  let timer = setInterval(startTimer, 1000);
 
   let numCard = 0;
   let fieldCards = document.querySelector('.fieldCards');
@@ -101,10 +103,14 @@ function hideCards() {
         window.application.numberPairs--;
         numCard--;
         if (window.application.numberPairs === 0) {
-          alert('win!');
+          console.log('win!');
+          clearInterval(timer);
+          renderResult(document.querySelector('.background'), 'win');
         }
       } else {
-        alert('lose!');
+        console.log('lose!');
+        clearInterval(timer);
+        renderResult(document.querySelector('.background'), 'lose');
       }
     }
   });

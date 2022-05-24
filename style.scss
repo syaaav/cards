@@ -45,7 +45,7 @@ $color-text-card: #000;
 }
 
 .difficulty {
-  max-width: 480px;
+  width: 480px;
   padding: 50px 69px;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,8 @@ $color-text-card: #000;
   color: $color-background;
 }
 
-.button {
+.button,
+.js-box-button {
   width: 246px;
   background-color: #7ac100;
   border-radius: 12px;
@@ -216,6 +217,43 @@ $color-text-card: #000;
   font-size: 6px;
   color: $color-text-card;
   transform: rotate(180deg);
+}
+
+.js-overlay {
+  background-color: rgba($color-background, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.js-box-img {
+  font-size: 90px;
+  margin-bottom: 5px;
+}
+.js-box-title {
+  margin-bottom: 28px;
+  font-family: $font-family;
+  font-size: 40px;
+  text-align: center;
+  color: $color-background;
+}
+.js-box-text {
+  max-width: 230px;
+  margin-bottom: 10px;
+  font-family: $font-family;
+  font-size: 24px;
+  text-align: center;
+  color: #000;
+}
+.js-box-time {
+  margin-bottom: 40px;
+  font-family: $font-family;
+  font-size: 64px;
+  text-align: center;
+  color: #000;
 }
 
 @media (max-width: 767px) {
