@@ -1,4 +1,4 @@
-import { createNewEl } from './screen_Start.js';
+import { createNewEl, renderStartScreen } from './screen_Start.js';
 import * as GameFunctions from './logic_Game.js';
 
 function renderScreenGame() {
@@ -32,13 +32,13 @@ function renderTopMenu(container) {
   createNewEl(
     'button',
     'button',
-    'Старт',
+    'Начать заново',
     document.querySelector('.fieldButton')
   );
 
   document.querySelector('.button').addEventListener('click', (event) => {
     event.preventDefault();
-    console.log('Кнопка работает');
+    renderStartScreen();
   });
 }
 

@@ -45,7 +45,6 @@ function renderDifficulty(container) {
 
   document.querySelector('.button').addEventListener('click', (event) => {
     event.preventDefault();
-    console.log('Кнопка работает');
 
     if (window.application.difficulty === '1') {
       window.application.numberCards = 2;
