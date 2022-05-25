@@ -46,10 +46,6 @@
   padding-left: calc(50% - 600px);
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 .background {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -239,20 +235,20 @@
   gap: 15px;
 }
 
+.cardBody {
+  width: 95px;
+  height: 133px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
 .cardShirt {
   -webkit-animation: lds-circle 0.4s ease-out;
           animation: lds-circle 0.4s ease-out;
   background-image: url("img/shirt.png");
   width: 95px;
   height: 133px;
-  border-radius: 4px;
-}
-
-.cardBody {
-  width: 95px;
-  height: 133px;
-  position: relative;
-  background-color: #fff;
   border-radius: 4px;
 }
 
@@ -269,6 +265,10 @@
           align-items: center;
   position: absolute;
   left: 6px;
+}
+
+.hidden .cardTop {
+  visibility: hidden;
 }
 
 .rankTop {
@@ -291,6 +291,10 @@
   left: 34px;
 }
 
+.hidden .suitCenter {
+  visibility: hidden;
+}
+
 .cardBottom {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -305,6 +309,10 @@
   position: absolute;
   bottom: 1px;
   right: 6px;
+}
+
+.hidden .cardBottom {
+  visibility: hidden;
 }
 
 .rankBottom {

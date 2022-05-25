@@ -1,6 +1,5 @@
 import { renderResult } from './screen_Final.js';
 
-// считаем кол-во одинаковых пар
 function countNumPairs() {
   let pairs = 0;
   let arrBreak = [];
@@ -27,93 +26,74 @@ function countNumPairs() {
   window.application.numberPairs = pairs;
 }
 
-// Variables
-let minute = 0;
-let second = 0;
-
 function startTimer() {
-  second++;
-  if (second <= 9) {
-    document.querySelector('.timeSec').textContent = '0' + second;
+  window.application.seconds++;
+  if (window.application.seconds <= 9) {
+    document.querySelector('.timeSec').textContent =
+      '0' + window.application.seconds;
   } else {
-    document.querySelector('.timeSec').textContent = second;
+    document.querySelector('.timeSec').textContent = window.application.seconds;
   }
-  if (second > 59) {
-    second = 0;
-    minute++;
-    if (minute <= 9) {
-      document.querySelector('.timeMin').textContent = '0' + minute;
+  if (window.application.seconds > 59) {
+    window.application.seconds = 0;
+    window.application.minutes++;
+    if (window.application.minutes <= 9) {
+      document.querySelector('.timeMin').textContent =
+        '0' + window.application.minutes;
     } else {
-      document.querySelector('.timeMin').textContent = minute;
+      document.querySelector('.timeMin').textContent =
+        window.application.minutes;
     }
+  }
+}
+
+function compareCards(numCard) {
+  if (
+    JSON.stringify(window.application.selectedCards[numCard]) ===
+    JSON.stringify(window.application.selectedCards[numCard - 1])
+  ) {
+    window.application.numberPairs--;
+    if (window.application.numberPairs === 0) {
+      clearInterval(window.application.interval);
+      window.application.minutes = 0;
+      window.application.seconds = 0;
+      renderResult(document.querySelector('.background'), 'win');
+    }
+  } else {
+    clearInterval(window.application.interval);
+    window.application.minutes = 0;
+    window.application.seconds = 0;
+    renderResult(document.querySelector('.background'), 'lose');
+  }
+}
+
+function saveCards(event) {
+  event.target.classList = 'cardBody';
+  if (window.application.indexCard === 0) {
+    window.application.selectedCards[window.application.indexCard] = {
+      rank: event.target.querySelector('.rankTop').textContent,
+      suit: event.target.querySelector('.suitTop').textContent,
+    };
+    window.application.indexCard++;
+  } else if (window.application.indexCard === 1) {
+    window.application.selectedCards[window.application.indexCard] = {
+      rank: event.target.querySelector('.rankTop').textContent,
+      suit: event.target.querySelector('.suitTop').textContent,
+    };
+    compareCards(window.application.indexCard);
+    window.application.indexCard--;
   }
 }
 
 function hideCards() {
   const cardsBody = document.querySelectorAll('.cardBody');
-  const cardTop = document.querySelectorAll('.cardTop');
-  const suitCenter = document.querySelectorAll('.suitCenter');
-  const cardBottom = document.querySelectorAll('.cardBottom');
-
   cardsBody.forEach((card) => {
-    card.classList.add('cardShirt');
-  });
-  cardTop.forEach((card) => {
-    card.classList.add('hidden');
-  });
-  suitCenter.forEach((card) => {
-    card.classList.add('hidden');
-  });
-  cardBottom.forEach((card) => {
-    card.classList.add('hidden');
+    card.classList.add('hidden', 'cardShirt');
   });
 
-  clearInterval;
-  let timer = setInterval(startTimer, 1000);
-
-  let numCard = 0;
-  let fieldCards = document.querySelector('.fieldCards');
-
-  fieldCards.addEventListener('click', (event) => {
-    // открываем выбранную карту
-    event.target.classList = 'cardBody';
-    let hiddenElements = event.target.querySelectorAll('.hidden');
-    hiddenElements.forEach((element) => {
-      element.classList.remove('hidden');
-    });
-
-    // записываем выбранную карту
-    if (numCard === 0) {
-      window.application.selectedCards[numCard] = {
-        rank: event.target.querySelector('.rankTop').textContent,
-        suit: event.target.querySelector('.suitTop').textContent,
-      };
-      numCard++;
-    } else if (numCard === 1) {
-      window.application.selectedCards[numCard] = {
-        rank: event.target.querySelector('.rankTop').textContent,
-        suit: event.target.querySelector('.suitTop').textContent,
-      };
-
-      // сравниваем 2 выбранные карты
-      if (
-        JSON.stringify(window.application.selectedCards[numCard]) ===
-        JSON.stringify(window.application.selectedCards[numCard - 1])
-      ) {
-        window.application.numberPairs--;
-        numCard--;
-        if (window.application.numberPairs === 0) {
-          console.log('win!');
-          clearInterval(timer);
-          renderResult(document.querySelector('.background'), 'win');
-        }
-      } else {
-        console.log('lose!');
-        clearInterval(timer);
-        renderResult(document.querySelector('.background'), 'lose');
-      }
-    }
-  });
+  window.application.interval = setInterval(startTimer, 1000);
+  window.application.indexCard = 0;
+  document.querySelector('.fieldCards').addEventListener('click', saveCards);
 }
 
 export { countNumPairs, hideCards };

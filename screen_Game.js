@@ -1,4 +1,5 @@
 import { createNewEl, renderStartScreen } from './screen_Start.js';
+import { arrRanks, arrSuits } from './constants.js';
 import * as GameFunctions from './logic_Game.js';
 
 function renderScreenGame() {
@@ -41,9 +42,6 @@ function renderTopMenu(container) {
     renderStartScreen();
   });
 }
-
-const arrRanks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
-const arrSuits = ['♠️', '♥️', '♦️', '♣️'];
 
 function renderCards(container) {
   let index = 0;
