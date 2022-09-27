@@ -15,8 +15,7 @@
 
 ## Description
 
-<p align="center">
-<img src="./img/cardGame.gif" width="80%"></p>
+<p align="center"><img src="./img/cardx2.gif" width="80%"></p>
 
 The game was implemented from scratch on TypeScript. It contains 3 difficulty levels, several timers and random card sets.
 
@@ -37,8 +36,7 @@ The game was implemented from scratch on TypeScript. It contains 3 difficulty le
 - Flip implemented using animation
 - Each and every card is 100% css (scss) except the PNG shirt
 
-  <p align="center"><img  src="./img/card.png" width="30%">
-  <img  src="./img/shirt.png" width="30%"></p>
+  <p align="center"><img  src="./img/card.png" width="30%"></p>
 
 ## Available Scripts
 
@@ -72,8 +70,7 @@ You will also see any lint errors in the console.
 
 ## Описание
 
-<p align="center">
-<img src="https://media.giphy.com/media/7OWdOQupgCClrZb19P/giphy.gif" width="80%"></p>
+<p align="center"><img src="./img/cardx2.gif" width="80%"></p>
 
 Игра была реализована с нуля на TypeScript. Она содержит 3 уровня сложности, несколько таймеров и случайные наборы карт.
 
@@ -94,8 +91,7 @@ You will also see any lint errors in the console.
 - Переворот реализован с использованием анимации
 - Каждая карта на 100% состоит из css (scss), кроме рубашки PNG.
 
-  <p align="center"><img  src="./readme_assets/4.png" width="30%">
-  <img  src="./readme_assets/4.png" width="30%"></p>
+  <p align="center"><img  src="./img/card.png" width="30%"></p>
 
 ## Как запустить
 
