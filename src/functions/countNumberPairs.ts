@@ -23,6 +23,4 @@ export default function countNumPairs() {
   }
 
   window.application.numberPairs = pairs;
-  console.log(arrBreak);
-  console.log(window.application.numberPairs);
 }

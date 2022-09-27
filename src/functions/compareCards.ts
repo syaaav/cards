@@ -1,17 +1,11 @@
 import renderResult from '../screen_Final';
 
 export default function compareCards(numCard: number) {
-  debugger;
   if (
     JSON.stringify(window.application.selectedCards[numCard]) ===
     JSON.stringify(window.application.selectedCards[numCard - 1])
   ) {
-    console.log(
-      window.application.selectedCards[numCard],
-      window.application.selectedCards[numCard - 1]
-    );
     window.application.numberPairs--;
-    console.log(window.application.numberPairs);
     if (window.application.numberPairs === 0) {
       clearInterval(window.application.interval);
       window.application.minutes = 0;
