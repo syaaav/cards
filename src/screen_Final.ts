@@ -1,4 +1,5 @@
-import { renderStartScreen, createNewEl } from './screen_Start';
+import renderStartScreen from './screen_Start';
+import createNewEl from './functions/createNewElement';
 
 function renderResult(container: HTMLDivElement, status: string) {
   container.style.position = 'relative';
@@ -76,4 +77,4 @@ function renderResult(container: HTMLDivElement, status: string) {
   }
 }
 
-export { renderResult };
+export default renderResult;

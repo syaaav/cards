@@ -1,6 +1,8 @@
-import { createNewEl, renderStartScreen } from './screen_Start';
+import renderStartScreen from './screen_Start';
+import createNewEl from './functions/createNewElement';
 import { arrRanks, arrSuits } from './constants';
-import * as GameFunctions from './logic_Game';
+import countNumPairs from './functions/countNumberPairs';
+import hideCards from './functions/hideCards';
 
 function renderScreenGame() {
   const background = document.querySelector(
@@ -145,8 +147,8 @@ function renderCards(container: HTMLDivElement) {
       index++;
     }
   }
-  GameFunctions.countNumPairs();
-  setTimeout(GameFunctions.hideCards, 5000);
+  countNumPairs();
+  setTimeout(hideCards, 5000);
 }
 
 export { renderScreenGame, renderTopMenu, renderCards };

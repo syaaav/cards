@@ -7,7 +7,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = {
   mode: process.env.MODE,
 
-  entry: '/screen_Start.ts',
+  entry: './src/screen_Start.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',

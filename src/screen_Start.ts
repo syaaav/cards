@@ -1,5 +1,6 @@
-import './style.css';
+import './style/style.scss';
 import * as CardsFunctions from './screen_Game';
+import createNewEl from './functions/createNewElement';
 
 declare global {
   interface Window {
@@ -10,20 +11,6 @@ declare global {
 document.addEventListener('DOMContentLoaded', () => {
   renderStartScreen();
 });
-
-function createNewEl(
-  type: string,
-  className: string,
-  text: string,
-  container: HTMLDivElement | null
-) {
-  const el = document.createElement(type);
-  el.classList.add(className);
-  el.textContent = text;
-  if (container != null) {
-    container.appendChild(el);
-  }
-}
 
 function renderStartScreen() {
   window.application.seconds = 0;
@@ -59,11 +46,11 @@ function renderDifficulty(container: HTMLDivElement) {
 
   createNewEl('button', 'button', 'Старт', container);
 
-  const diffLev = document.querySelector(
+  const difficultyLevel = document.querySelector(
     '.difficultyLevels'
   ) as HTMLDivElement | null;
-  if (diffLev != null) {
-    diffLev.addEventListener('click', (event: any) => {
+  if (difficultyLevel != null) {
+    difficultyLevel.addEventListener('click', (event: any) => {
       event.preventDefault();
       if (event.target != null) {
         window.application.difficulty = event.target.textContent;
@@ -89,4 +76,4 @@ function renderDifficulty(container: HTMLDivElement) {
   }
 }
 
-export { createNewEl, renderStartScreen };
+export default renderStartScreen;
